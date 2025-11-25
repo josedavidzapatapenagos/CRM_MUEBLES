@@ -1,0 +1,40 @@
+/* src/styles/globals.css */
+
+@import "tailwindcss";
+
+@config "../../tailwind.config.js";
+
+/* ========================================================== */
+/* 🎨 DEFINICIÓN DE ANIMACIÓN DE FONDO PARA EL CAMBIO DE TEMA */
+/* ========================================================== */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === TEMA CLARO (Degradado en Negro/Gris) === */
+.light {
+  background: linear-gradient(-45deg, #ebe5e5, #ebd9d9, #f8dcdc, #fce9e9); 
+  background-size: 400% 400%; 
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* === TEMA OSCURO (Degradado en Azul Marino) === */
+.dark {
+  background: linear-gradient(-45deg, #000033, #000080, #1e3a8a, #000033);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* Asegura que el body cubra la pantalla */
+body {
+  min-height: 100vh;
+}
