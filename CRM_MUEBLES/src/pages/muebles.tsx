@@ -1,20 +1,23 @@
+// src/pages/muebles.tsx
+
 import { useState } from 'react';
 import { Link } from '@heroui/link';
-import { Input } from '@heroui/input'; // Componente de input para la búsqueda
-import { Button } from '@heroui/button'; // Componente de botón para filtros
-import { Card, CardBody, CardFooter } from '@heroui/card'; // Componente Card para cada mueble
-import DefaultLayout from '@/layouts/default'; // Tu layout personalizado
+import { Input } from '@heroui/input'; 
+import { Button } from '@heroui/button'; 
+import { Card, CardBody, CardFooter } from '@heroui/card';
+import DefaultLayout from '@/layouts/default'; 
 
-// --- DATA: Productos de Ejemplo (Reemplaza esto con tu fuente de datos real) ---
+// --- DATA: Productos de Ejemplo (USANDO RUTAS DESDE /public/images) ---
 const products = [
-    { id: 1, name: "Sofá Modular Helsinki", category: "Salón", price: 1850000, image: '/images/m-1.png' },
-    { id: 2, name: "Mesa Comedor Nórdica", category: "Comedor", price: 920000, image: '/images/m2.png' },
-    { id: 3, name: "Silla Eames Clásica", category: "Sillas", price: 180000, image: '/images/m3.png' },
-    { id: 4, name: "Librero Flotante Z", category: "Almacenamiento", price: 450000, image: '/images/m4.png' },
-    { id: 5, name: "Cama King Viena", category: "Dormitorio", price: 2100000, image: '/images/m5.png' },
-    { id: 6, name: "Mesa Auxiliar Cobre", category: "Salón", price: 230000, image: '/images/m6.png' },
-    { id: 7, name: "Escritorio Minimalista", category: "Oficina", price: 680000, image: '/images/m7.png' },
-    { id: 8, name: "Butaca Terciopelo Azul", category: "Salón", price: 750000, image: '/images/m8.png' },
+    // 🚨 Asegúrate de que estos archivos estén en tu carpeta public/images/
+    { id: '1', name: "Sofá Modular Helsinki", category: "Salón", price: 1850000, image: '/images/m-1.png' },
+    { id: '2', name: "Mesa Comedor Nórdica", category: "Comedor", price: 920000, image: '/images/m2.png' },
+    { id: '3', name: "Silla Eames Clásica", category: "Sillas", price: 180000, image: '/images/m3.png' },
+    { id: '4', name: "Librero Flotante Z", category: "Almacenamiento", price: 450000, image: '/images/m4.png' },
+    { id: '5', name: "Cama King Viena", category: "Dormitorio", price: 2100000, image: '/images/m5.png' },
+    { id: '6', name: "Mesa Auxiliar Cobre", category: "Salón", price: 230000, image: '/images/m6.png' },
+    { id: '7', name: "Escritorio Minimalista", category: "Oficina", price: 680000, image: '/images/m7.png' },
+    { id: '8', name: "Butaca Terciopelo Azul", category: "Salón", price: 750000, image: '/images/m8.png' },
 ];
 
 // Array de categorías para los botones de filtro
@@ -38,12 +41,12 @@ const MueblesPage = () => {
 
     return (
         <DefaultLayout>
-            <div className="py-10">
+            <div className="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* === Título y Herramientas === */}
                 <header className="mb-10 text-center">
                     <h1 className="text-5xl font-extrabold tracking-tight text-foreground mb-2">
-                        Nuestro Catálogo de Muebles
+                        Nuestro Catálogo de Muebles 🛋️
                     </h1>
                     <p className="text-lg text-foreground/70">
                         Encuentra la pieza perfecta que define tu estilo.
@@ -59,7 +62,6 @@ const MueblesPage = () => {
                             placeholder="Buscar por nombre..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            // Puedes añadir un icono de lupa aquí si lo tienes definido
                         />
                     </div>
 
@@ -83,13 +85,18 @@ const MueblesPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     {filteredProducts.length > 0 ? (
                         filteredProducts.map((product) => (
+                            // Enlaza toda la tarjeta a la página de detalle, usando el ID del producto
                             <Link href={`/muebles/${product.id}`} key={product.id}>
-                                <Card isHoverable className="h-full transition-all duration-300 hover:shadow-2xl">
+                                <Card 
+                                    isHoverable 
+                                    className="h-full transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl"
+                                >
                                     <CardBody className="overflow-visible p-0">
                                         <img
                                             alt={product.name}
                                             className="w-full object-cover h-64 rounded-t-xl"
-                                            src={product.image}
+                                            // Ruta desde la carpeta 'public'
+                                            src={product.image} 
                                         />
                                     </CardBody>
                                     <CardFooter className="flex flex-col items-start px-4 pb-4 pt-2">
@@ -107,7 +114,7 @@ const MueblesPage = () => {
                         ))
                     ) : (
                         <div className="col-span-full text-center py-10 text-foreground/70">
-                            No se encontraron muebles que coincidan con los criterios de búsqueda. 
+                            No se encontraron muebles que coincidan con los criterios de búsqueda. 😔
                         </div>
                     )}
                 </div>

@@ -1,22 +1,12 @@
+// src/pages/index.tsx
+
 import { Link } from "@heroui/link";
-// Quitamos Snippet y Code ya que no se usarán
-// import { Snippet } from "@heroui/snippet"; 
-// import { Code } from "@heroui/code"; 
 import { button as buttonStyles } from "@heroui/theme";
-
-// Quitamos siteConfig, title, subtitle, y GithubIcon ya que no se usarán en el contenido
-// import { siteConfig } from "@/config/site"; 
-// import { title, subtitle } from "@/components/primitives";
-// import { GithubIcon } from "@/components/icons"; 
-
 import DefaultLayout from "@/layouts/default";
 
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      {/* Sustituimos el contenido de la plantilla por la Hero Section de CRM Muebles. 
-        Mantenemos la estructura general para la sección de la Hero.
-      */}
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 min-h-[80vh] relative">
         
         {/* Fondo con imagen para la Hero Section */}
@@ -46,19 +36,35 @@ export default function IndexPage() {
             Cada pieza de CRM Muebles es creada pensando en la durabilidad, el estilo y la comodidad. Descubre la calidad artesanal.
           </p>
 
-          {/* Botón: Ver Muebles (Usando el estilo buttonStyles de HeroUI) */}
-          <div className="flex justify-center gap-3 mt-8">
+          {/* Botones: Ver Muebles y Contactar */}
+          <div className="flex justify-center gap-4 mt-8"> 
+            
+            {/* Botón 1: Ver Muebles */}
             <Link
               href="/muebles"
               className={buttonStyles({
                 color: "primary",
                 radius: "full",
                 variant: "shadow",
-                size: "lg", // Hacemos el botón un poco más grande
+                size: "lg",
               })}
             >
               Ver Muebles 
             </Link>
+            
+            {/* Botón 2: Contáctanos */}
+            <Link
+              href="/contacto" // Puedes crear esta página después
+              className={buttonStyles({
+                color: "primary",
+                radius: "full",
+                variant: "bordered", // Usamos un estilo delineado para diferenciar
+                size: "lg",
+              })}
+            >
+              Contáctanos 💬
+            </Link>
+
           </div>
         </div>
         
