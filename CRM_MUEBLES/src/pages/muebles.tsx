@@ -1,5 +1,3 @@
-// src/pages/muebles.tsx
-
 import { useState } from 'react';
 import { Link } from '@heroui/link';
 import { Input } from '@heroui/input'; 
@@ -85,7 +83,7 @@ const MueblesPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     {filteredProducts.length > 0 ? (
                         filteredProducts.map((product) => (
-                            // Enlaza toda la tarjeta a la página de detalle, usando el ID del producto
+                            // La ruta es /muebles/:id para llevar a la página de detalle
                             <Link href={`/muebles/${product.id}`} key={product.id}>
                                 <Card 
                                     isHoverable 
@@ -105,6 +103,7 @@ const MueblesPage = () => {
                                         <p className="text-primary font-semibold text-xl mt-1">
                                             {formatPrice(product.price)}
                                         </p>
+                                        {/* El texto del botón es "Ver Detalle" */}
                                         <Button size="sm" color="primary" className="mt-3 w-full">
                                             Ver Detalle
                                         </Button>
@@ -114,7 +113,7 @@ const MueblesPage = () => {
                         ))
                     ) : (
                         <div className="col-span-full text-center py-10 text-foreground/70">
-                            No se encontraron muebles que coincidan con los criterios de búsqueda. 😔
+                            No se encontraron muebles que coincidan con los criterios de búsqueda. 
                         </div>
                     )}
                 </div>

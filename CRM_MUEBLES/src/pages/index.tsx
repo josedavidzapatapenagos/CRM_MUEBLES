@@ -1,10 +1,11 @@
-// src/pages/index.tsx
-
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
 import DefaultLayout from "@/layouts/default";
 
 export default function IndexPage() {
+  // Número de WhatsApp de ejemplo (Cambiá '573001234567' por tu número real)
+  const whatsappUrl = "https://wa.me/573001234567?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20estoy%20interesado%20en%20saber%20m%C3%A1s%20sobre%20sus%20muebles.";
+
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 min-h-[80vh] relative">
@@ -17,10 +18,8 @@ export default function IndexPage() {
             backgroundPosition: '50% 75%',
           }}
         >
-          {/* 
-
-[Image of elegant modern living room interior]
- */}
+          {/* [Image of elegant modern living room interior]
+          */}
         </div>
 
         <div className="inline-block max-w-4xl text-center justify-center relative z-10 p-4">
@@ -52,9 +51,10 @@ export default function IndexPage() {
               Ver Muebles 
             </Link>
             
-            {/* Botón 2: Contáctanos */}
+            {/* Botón 2: Contáctanos (Modificado para WhatsApp) */}
             <Link
-              href="/contacto" // Puedes crear esta página después
+              href={whatsappUrl} // Usamos la URL de WhatsApp
+              target="_blank" // Abrir en una nueva pestaña
               className={buttonStyles({
                 color: "primary",
                 radius: "full",
